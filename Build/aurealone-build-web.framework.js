@@ -7934,8 +7934,9 @@ var ASM_CONSTS = {
   	}
 
   function _OnGameMove(userId, opponentId, balance, opponentBalance) {
-      var jsOpponentId = UTF8ToString(opponentId);
-          window.parent.postMessage({ type: "gamemove", address: userId, opponentAddress: opponentId, balance, opponentBalance }, "*");
+          var jsOpponentId = UTF8ToString(opponentId);
+          var jsUserId = UTF8ToString(userId);
+          window.parent.postMessage({ type: "gamemove", address: jsUserId, opponentAddress: jsOpponentId, balance, opponentBalance }, "*");
       }
 
   function _SendMessageToFrontend(balance, opponentId) {
