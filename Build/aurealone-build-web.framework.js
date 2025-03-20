@@ -1667,7 +1667,9 @@ var ASM_CONSTS = {
   function _GetUserIdFromUrl() {
           var urlParams = new URLSearchParams(window.location.search);
           var userId = urlParams.get("userId") || "NULL";
-          return stringToUTF8(userId, allocateUTF8(userId), userId.length + 1);
+          var buffer = _malloc(userId.length + 1);
+          stringToUTF8(userId, buffer, userId.length + 1);
+          return buffer;
       }
 
   var JS_Accelerometer = null;
